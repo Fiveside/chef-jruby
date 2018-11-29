@@ -9,7 +9,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.2.6"
 
 depends "java"
-depends "install_from"
+depends "ark"
 
 supports "ubuntu"
 supports "debian"

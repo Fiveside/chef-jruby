@@ -24,13 +24,16 @@ version = node[:jruby][:version]
 prefix =  node[:jruby][:install_path]
 
 # install jruby
-install_from_release('jruby') do
-  release_url  "http://jruby.org.s3.amazonaws.com/downloads/#{version}/jruby-bin-#{version}.tar.gz"
+ark 'jruby' do
+  url          "http://jruby.org.s3.amazonaws.com/downloads/#{version}/jruby-bin-#{version}.tar.gz"
+  checksum     node[:jruby][:checksum]
   home_dir     prefix
-  action       [:install, :install_binaries]
   version      version
-  checksum node[:jruby][:checksum]
-  has_binaries  %w(bin/jgem bin/jruby bin/jirb)
+  action       :install
+  prefix_home  '/usr/local/lib'
+  prefix_bin   '/usr/local/bin'
+  path         "/usr/local/share/jruby-#{version}"
+  has_binaries %w(bin/jgem bin/jruby bin/jirb)
   not_if       { File.exists?(prefix) }
 end
 
