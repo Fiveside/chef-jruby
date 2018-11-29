@@ -1,5 +1,6 @@
 # encoding: utf-8
 
+name             "jruby"
 maintainer       "Jorge Falcão"
 maintainer_email "falcao@intelie.com.br"
 license          "Apache 2.0"
